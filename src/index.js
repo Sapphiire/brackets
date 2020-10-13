@@ -17,5 +17,5 @@ module.exports = function check(str, bracketsConfig) {
     else
       array.push(str[i]);
   }
-  return true
+  return array.length ? false : true
 }
