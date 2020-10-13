@@ -9,7 +9,7 @@ module.exports = function check(str, bracketsConfig) {
 
   for(let i = 0; i < length; i++) {
     if(brackets_exit.has(str[i])) {
-      if(!array.length || array[array.length - 1] != brackets_exit.get(str[i]))
+      if((!array.length || array[array.length - 1] != brackets_exit.get(str[i])) && !brackets_open.has(str[i]))
         return false;
       else
         array.pop();
@@ -17,5 +17,6 @@ module.exports = function check(str, bracketsConfig) {
     else
       array.push(str[i]);
   }
+
   return array.length ? false : true
 }
