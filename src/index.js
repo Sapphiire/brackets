@@ -9,10 +9,13 @@ module.exports = function check(str, bracketsConfig) {
 
   for(let i = 0; i < length; i++) {
     if(brackets_exit.has(str[i])) {
-      if((!array.length || array[array.length - 1] != brackets_exit.get(str[i])) && !brackets_open.has(str[i]))
-        return false;
-      else
-        array.pop();
+      if(brackets_open.has(str[i]) && array[array.length - 1] != brackets_exit.get(str[i])) array.push(str[i]);
+      else {
+        if((!array.length || array[array.length - 1] != brackets_exit.get(str[i])))
+          return false;
+        else
+          array.pop();
+      }
     }
     else
       array.push(str[i]);
